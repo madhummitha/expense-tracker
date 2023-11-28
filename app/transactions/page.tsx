@@ -1,11 +1,12 @@
-"use client";
-import { useSession } from "next-auth/react";
 import React from "react";
+import { getCurrentUser } from "@/lib/session";
+import { getAllTransactions } from "./actions";
 
-const Transactions = () => {
-  const { data } = useSession();
+const Transactions = async () => {
+  const user = await getCurrentUser();
+  // const transactions = await getAllTransactions(user.id);
 
-  return <div>{JSON.stringify(data)}</div>;
+  return <div>{JSON.stringify(user)}</div>;
 };
 
 export default Transactions;

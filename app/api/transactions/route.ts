@@ -16,3 +16,11 @@ export async function POST(request: NextRequest) {
   const transaction = await Transaction.create(body);
   return NextResponse.json(transaction, { status: 201 });
 }
+
+export async function GET(request: NextRequest) {
+  await dbConnect();
+
+  // const body = await request.json();
+  // const transactions = await Transaction.find();
+  return NextResponse.json("transactions", { status: 200 });
+}
